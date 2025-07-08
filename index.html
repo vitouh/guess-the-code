@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guess the C0D3</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <div id="container">
+    <h1>G͟u͟e͟s͟s͟ ͟t͟h͟e͟ ͟C͟0͟D͟3</h1>
+    <input type="text" id="codeInput" placeholder="Enter code...">
+    <button onclick="checkCode()">Submit</button>
+    <div id="hint">Hint: It's a code only a true genius would try.</div>
+    <div id="message"></div>
+  </div>
+
+  <div id="playScreen">
+    <div id="playButton" onclick="playRickroll()">▶️</div>
+  </div>
+
+  <div id="easterEggScreen">
+    <iframe src="https://www.youtube.com/embed/Cd1P7YxuwP0?autoplay=1" allow="autoplay"></iframe>
+    <div id="easterText">
+      <p>Try again!</p>
+      <p>Refresh the site.</p>
+    </div>
+  </div>
+
+  <script src="js/matrix-background.js" defer></script>
+  <script src="js/code-checker.js" defer></script>
+  <script src="js/play-rickroll.js" defer></script>
+</body>
+</html>
