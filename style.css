@@ -1,27 +1,33 @@
+/* Layout and Colors */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   background: black;
-  overflow: hidden;
   font-family: 'Courier New', monospace;
+  overflow: hidden;
   color: #00ff00;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
+/* Matrix Canvas */
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 
+/* Main UI */
 #container {
-  text-align: center;
+  position: relative;
   z-index: 2;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ff00;
+  border-radius: 10px;
 }
 
 h1 {
@@ -35,10 +41,11 @@ input {
   background-color: black;
   border: 2px solid #00ff00;
   color: #00ff00;
+  width: 250px;
 }
 
 button {
-  padding: 10px;
+  padding: 10px 15px;
   margin-left: 10px;
   font-size: 1rem;
   background-color: #00ff00;
@@ -47,37 +54,41 @@ button {
   cursor: pointer;
 }
 
+#hint {
+  margin-top: 15px;
+}
+
 #message {
-  margin-top: 20px;
+  margin-top: 10px;
   color: red;
   height: 20px;
 }
 
-#hint {
-  margin-top: 10px;
-  color: #00ff00;
-}
-
-#playScreen,
-#easterEggScreen {
+/* Hidden Screens */
+#playScreen, #easterEggScreen {
   display: none;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: black;
+  z-index: 999;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 10;
+}
+
+#playScreen {
+  display: none;
 }
 
 #playButton {
-  font-size: 4rem;
-  color: white;
+  font-size: 5rem;
+  color: #fff;
   cursor: pointer;
 }
 
-iframe {
+/* Easter Egg */
+#patrick {
   width: 560px;
   height: 315px;
   border: none;
@@ -86,4 +97,6 @@ iframe {
 #easterText {
   margin-top: 20px;
   color: #00ff00;
+  font-size: 1.2rem;
+  text-align: center;
 }
