@@ -4,31 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guess the C0D3</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
   <div id="container">
     <h1>G͟u͟e͟s͟s͟ ͟t͟h͟e͟ ͟C͟0͟D͟3</h1>
-    <input type="text" id="codeInput" placeholder="Enter code...">
+    <input type="text" id="codeInput" placeholder="Enter code..." />
     <button onclick="checkCode()">Submit</button>
     <div id="hint">Hint: It's a code only a true genius would try.</div>
     <div id="message"></div>
   </div>
 
-  <!-- Rickroll Screen -->
-  <div id="playScreen" style="display: none;">
+  <!-- Rickroll screen -->
+  <div id="playScreen">
     <div id="playButton" onclick="playRickroll()">▶️</div>
   </div>
 
-  <!-- Easter Egg Screen -->
-  <div id="easterEggScreen" style="display: none;">
-    <iframe src="https://www.youtube.com/embed/3o3Z3Z_rURU?autoplay=1" allow="autoplay"></iframe>
-    <div id="easterText">
-      <p>Try again!</p>
-      <p>Refresh the site.</p>
-    </div>
+  <!-- Easter Egg -->
+  <div id="easterEggScreen">
+    <iframe id="patrick" src="" allow="autoplay"></iframe>
+    <div id="easterText">Try again!<br>Refresh the site.</div>
   </div>
 
   <script src="js/script.js" defer></script>
