@@ -1,8 +1,8 @@
-// === MATRIX BACKGROUND ===
+// === Matrix Background ===
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 const letters = Array(256).join("0").split("");
 
@@ -19,7 +19,7 @@ function drawMatrix() {
 }
 setInterval(drawMatrix, 33);
 
-// === CODE CHECKER LOGIC ===
+// === Code Logic ===
 const insults = [
   "Are you even trying?",
   "My grandma guesses better.",
@@ -55,13 +55,14 @@ function checkCode() {
   } else if (input.toLowerCase() === "password") {
     document.getElementById("container").style.display = "none";
     document.getElementById("easterEggScreen").style.display = "flex";
+    document.getElementById("patrick").src = "https://www.youtube.com/embed/3o3Z3Z_rURU?autoplay=1";
   } else {
     message.textContent = insults[Math.floor(Math.random() * insults.length)];
     if (attempts < hints.length - 1) {
       attempts++;
       hint.textContent = hints[attempts];
     }
-    setTimeout(() => message.textContent = "", 2000);
+    setTimeout(() => (message.textContent = ""), 2000);
   }
 }
 
