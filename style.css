@@ -58,7 +58,8 @@ button {
   color: #00ff00;
 }
 
-#playScreen, #easterEggScreen {
+#playScreen,
+#easterEggScreen {
   display: none;
   position: fixed;
   top: 0; left: 0;
