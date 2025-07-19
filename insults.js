@@ -1,12 +1,12 @@
 const insults = [
-  "Access Denied. Try again, Agent Dumber.",
-  "That's not the code. Are you even trying?",
-  "Wrong again. Maybe ask your cat for help.",
-  "Keep going. Failure builds character.",
-  "That code was used in 2005. Next.",
-  "You thought that would work? LOL.",
-  "Access denied. Try breathing first.",
-  "Agent, your intelligence is... concerning.",
-  "Nice try. Still wrong.",
-  "ERROR: Too cringe to continue."
+  "You absolute donut.",
+  "You're as useless as a white crayon.",
+  "Did you think that would work?",
+  "Wrong again, genius.",
+  "Maybe try Googling next time.",
+  "Your keyboard deserves better."
 ];
+
+function getRandomInsult() {
+  return insults[Math.floor(Math.random() * insults.length)];
+}
