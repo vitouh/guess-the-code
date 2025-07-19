@@ -1,23 +1,19 @@
-const passwordResponses = {
-  "admin": "You're not an admin. You're a clown.",
-  "1234": "What are you, 5 years old?",
-  "vito": "Hey that’s me! Now try again.",
-  "donlopez13": "Nice username. Still wrong.",
-  "hacker": "Hacker? You can't even guess a code.",
-  "letmein": "Try knocking next time.",
-  "guest": "Access denied, stranger.",
-  "root": "You ain't root. You're rotten.",
-  "hello": "Hi. Now leave.",
-  "open_sesame": "This isn’t a fairy tale, buddy.",
-  "iloveyou": "Yuck. Keep your feelings to yourself.",
-  "qwerty": "Mash your keyboard harder next time.",
-  "test": "This ain’t a lab experiment.",
-  "0000": "That’s so secure… said no one ever.",
-  "correcthorsebatterystaple": "Nope. XKCD won’t help you.",
-  "godmode": "Not even close, mortal.",
-  "opensesame": "Wrong magic words, genius.",
-  "vscode": "Cool editor. Still the wrong code.",
-  "sigma": "You're not Him. You're mid.",
-  "vitoiscool": "✅ ACCESS GRANTED! Welcome, Vito.",
-  "y0uR3_s0_dUMbb": "🔓 UNLOCKED: You're lucky, not smart."
-};
+const insults = [
+  "You call that a code?",
+  "My pet rock could guess better.",
+  "Try again, genius.",
+  "Even a toaster would do better.",
+  "You're embarrassing yourself.",
+  "Wrong. Again. Impressive consistency.",
+  "Go touch some grass.",
+  "Nice try... not.",
+  "Better luck next life.",
+  "Bruh.",
+  "You really thought that would work?",
+  "Please stop. For your own sake.",
+  "I bet you clicked submit with confidence."
+];
+
+function getRandomInsult() {
+  return insults[Math.floor(Math.random() * insults.length)];
+}
