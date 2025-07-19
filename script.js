@@ -1,64 +1,101 @@
-const correctCodes = ["vit0isc00L", "acr33", "y0ur3_s0_dUmBB"];
-let attempts = 0;
-let hintReveal = 0;
+const correctPasswords = ["vit0isc00L", "acr33", "y0ur3_s0_dUmBB"];
+const insults = [
+  "Incorrect... again? Really?",
+  "Do you even know what you're doing?",
+  "You're embarrassing yourself.",
+  "My toaster could do better.",
+  "Try harder, script kiddie.",
+  "Is that all you've got?",
+  "Access denied. You're not elite.",
+  "You're getting roasted by HTML."
+];
 
-function playSound(success) {
-  const audio = new Audio(success ? 'success.mp3' : 'fail.mp3');
-  audio.play();
+let attempts = 0;
+const hintBox = document.getElementById("hint");
+const insultBox = document.getElementById("insult");
+const input = document.getElementById("password");
+const fileContainer = document.getElementById("file-container");
+
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const pwd = input.value.trim();
+    input.disabled = true;
+
+    if (correctPasswords.includes(pwd)) {
+      document.getElementById("success-sound").play();
+      insultBox.innerText = "Access granted.";
+      simulateLoading(() => {
+        fileContainer.style.display = "block";
+        hintBox.innerText = "";
+      });
+    } else {
+      document.getElementById("fail-sound").play();
+      attempts++;
+      input.value = "";
+      insultBox.innerText = insults[attempts % insults.length];
+
+      if (attempts % 3 === 0 && attempts / 3 <= "vit0isc00L".length) {
+        let hint = "vit0isc00L".split("").map((c, i) =>
+          i < attempts / 3 ? c : "_"
+        ).join("");
+        hintBox.innerText = `Hint: ${hint}`;
+      }
+
+      setTimeout(() => {
+        input.disabled = false;
+        input.focus();
+      }, 3000);
+    }
+  }
+});
+
+function simulateLoading(callback) {
+  insultBox.innerText = "Loading secret file...";
+  let dots = 0;
+  const interval = setInterval(() => {
+    insultBox.innerText += ".";
+    dots++;
+    if (dots > 5) {
+      clearInterval(interval);
+      callback();
+    }
+  }, 500);
 }
 
-function checkCode() {
-  const input = document.getElementById("codeInput").value;
-  const feedback = document.getElementById("feedback");
+function showRickroll() {
+  document.getElementById("rickroll-modal").style.display = "block";
+}
 
-  if (correctCodes.includes(input)) {
-    playSound(true);
-    feedback.textContent = "Access granted.";
-    feedback.style.color = "#0f0";
-  } else {
-    playSound(false);
-    feedback.textContent = getInsult();
-    feedback.style.color = "red";
-    attempts++;
+function hideRickroll() {
+  document.getElementById("rickroll-modal").style.display = "none";
+}
 
-    // Hint system
-    const hint = document.getElementById("hint");
-    const real = "vit0isc00L";
-    if (attempts % 3 === 0 && hintReveal < real.length) {
-      hintReveal++;
-    }
+// Matrix background animation
+const canvas = document.createElement("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+document.querySelector(".matrix").appendChild(canvas);
 
-    hint.textContent = "Hint: " + "_".repeat(real.length - hintReveal) + real.slice(real.length - hintReveal);
+const ctx = canvas.getContext("2d");
+const columns = Math.floor(canvas.width / 10);
+const drops = Array(columns).fill(1);
 
-    // Cooldown
-    document.getElementById("codeInput").disabled = true;
-    setTimeout(() => {
-      document.getElementById("codeInput").disabled = false;
-    }, 3000);
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = "10pt Courier";
+
+  for (let i = 0; i < drops.length; i++) {
+    const char = Math.random() > 0.5 ? "1" : "0";
+    ctx.fillText(char, i * 10, drops[i] * 10);
+
+    if (drops[i] * 10 > canvas.height || Math.random() > 0.975)
+      drops[i] = 0;
+
+    drops[i]++;
   }
 }
 
-function getInsult() {
-  const insults = [
-    "Wrong. You're not very bright, huh?",
-    "Nope. Try again, Einstein.",
-    "You call that a guess?",
-    "Still wrong. Yikes.",
-    "You're just embarrassing yourself now.",
-    "Error 404: Intelligence not found."
-  ];
-  return insults[Math.floor(Math.random() * insults.length)];
-}
-
-function openSecretFile() {
-  const loader = document.getElementById("loader");
-  const video = document.getElementById("rickroll");
-
-  loader.classList.remove("hidden");
-
-  setTimeout(() => {
-    loader.classList.add("hidden");
-    video.classList.remove("hidden");
-    video.play();
-  }, 2000);
-}
+setInterval(drawMatrix, 33);
