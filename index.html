@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crack the Code</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
+  <canvas id="matrix"></canvas>
   <div class="container">
-    <h1>🔐 Enter the Code</h1>
-    <input type="password" id="passwordInput" placeholder="Enter password..." />
-    <button onclick="checkPassword()">Access</button>
+    <h1>💻 Crack the Code</h1>
+    <input type="password" id="passwordInput" placeholder="Enter password"/>
+    <button onclick="checkPassword()">Enter</button>
     <p id="response"></p>
   </div>
+  <script src="insults.js"></script>
+  <script src="matrix.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
