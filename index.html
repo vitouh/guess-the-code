@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Access Denied</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="matrix.js"></script>
+  <meta charset="UTF-8">
+  <title>Secure Login</title>
+  <link rel="stylesheet" href="style.css">
   <script defer src="insults.js"></script>
+  <script defer src="matrix.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-
+  <canvas id="matrix"></canvas>
   <div class="container">
-    <div class="terminal">
-      <p class="line">ACCESS DENIED.</p>
-      <p class="line" id="insultLine">You absolute donut.</p>
-      <input type="password" id="codeInput" placeholder="Enter secret code..." />
-      <button onclick="checkCode()">ENTER</button>
-    </div>
+    <h1>Enter Password</h1>
+    <input type="password" id="password" placeholder="Enter code..." autofocus>
+    <button onclick="checkPassword()">Access</button>
+    <p id="insult"></p>
+    <div id="hint">Hint: <span id="revealedHint">__________</span></div>
   </div>
 
-  <div id="endScreen" class="hidden">
+  <div id="endScreen">
     <p class="welcome">welcome back agent.</p>
-    <div class="file-container">
-      <span class="file-icon">📁</span>
-      <span class="file-name" onclick="revealFile()">s3cret_file</span>
+    <div id="file" onclick="showRickRoll()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="File Icon">
+      <span>s3cret_file</span>
     </div>
-    <div id="loader" class="hidden">
-      <p>Loading...</p>
-      <div class="loading-bar"><div class="progress"></div></div>
-    </div>
-    <video id="rickroll" class="hidden" controls autoplay>
-      <source src="rickroll.mp4" type="video/mp4" />
-    </video>
+    <div class="loading" id="loadingBar"></div>
   </div>
+
+  <audio id="failSound" src="fail.mp3"></audio>
+  <audio id="successSound" src="success.mp3"></audio>
+
+  <p id="credit">This website is made by Don Vito</p>
 </body>
 </html>
