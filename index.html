@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crack the Code</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrix"></canvas>
-  <div class="container">
-    <h1>💻 Crack the Code</h1>
-    <input type="password" id="passwordInput" placeholder="Enter password"/>
-    <button onclick="checkPassword()">Enter</button>
-    <p id="response"></p>
+  
+  <div id="main" class="content">
+    <h1>Enter the Code</h1>
+    <input type="text" id="codeInput" placeholder="Enter password...">
+    <button onclick="checkCode()">Submit</button>
+    <p id="message"></p>
   </div>
-  <script src="insults.js"></script>
+
+  <div id="endScreen" class="hidden">
+    <h2 class="agent">welcome back agent.</h2>
+    <a href="rickroll.mp4" download>
+      <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" class="file-icon" alt="File icon">
+      <div class="filename">s3cret_file</div>
+    </a>
+  </div>
+
   <script src="matrix.js"></script>
+  <script src="insults.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
