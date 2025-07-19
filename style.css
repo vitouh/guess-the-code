@@ -1,13 +1,17 @@
-body, html {
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', monospace;
-  overflow: hidden;
-  background: black;
-  color: lime;
+  box-sizing: border-box;
+  font-family: Courier New, Courier, monospace;
 }
 
-canvas#matrix {
+body {
+  background: black;
+  color: lime;
+  overflow: hidden;
+}
+
+canvas {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,76 +19,110 @@ canvas#matrix {
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
 }
 
-.title {
-  font-size: 24px;
+.terminal {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border: 2px solid lime;
+  border-radius: 8px;
+  max-width: 90vw;
 }
 
-input, button {
-  font-family: 'Courier New', monospace;
-  font-size: 16px;
-  padding: 10px;
-  margin-top: 10px;
-  background: #111;
+.line {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+input[type="password"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: black;
   color: lime;
-  border: 1px solid lime;
+  border-bottom: 2px solid lime;
+  margin-bottom: 1rem;
+  width: 80%;
 }
 
-#insult {
-  margin-top: 15px;
-  color: red;
-}
-
-#end-screen {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+button {
+  background: transparent;
   color: lime;
-}
-
-.end-message {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.file-icon {
-  width: 80px;
+  border: 2px solid lime;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
-.file-label {
-  font-size: 16px;
-  margin-top: 5px;
+#endScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black;
+  color: lime;
+  font-size: 1.2rem;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-#loading-bar {
-  width: 80%;
-  background: #333;
-  height: 10px;
-  margin: 20px auto;
-  border: 1px solid lime;
+.file-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-#progress {
-  width: 0%;
-  height: 100%;
-  background: lime;
+.file-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.file-name {
+  font-size: 1.2rem;
+  text-decoration: underline;
 }
 
 .hidden {
   display: none;
 }
 
+#loader {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 10px;
+  border: 1px solid lime;
+  margin-top: 10px;
+  background: black;
+}
+
+.loading-bar .progress {
+  width: 0%;
+  height: 100%;
+  background: lime;
+  animation: loading 3s linear forwards;
+}
+
+@keyframes loading {
+  to {
+    width: 100%;
+  }
+}
+
 video {
-  max-width: 90vw;
-  max-height: 70vh;
-  margin-top: 20px;
+  margin-top: 2rem;
+  max-width: 90%;
+  height: auto;
 }
