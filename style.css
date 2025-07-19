@@ -1,13 +1,14 @@
 body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
   overflow: hidden;
-  font-family: 'Courier New', monospace;
-  background-color: black;
-  color: #0f0;
+  font-family: monospace;
+  color: #00ff00;
+  background: black;
 }
 
-canvas {
+canvas#matrix {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,19 +16,31 @@ canvas {
 }
 
 .container {
-  z-index: 1;
   position: relative;
+  z-index: 1;
   text-align: center;
   margin-top: 20vh;
-  color: #0f0;
 }
 
-input, button {
+input {
   padding: 10px;
-  margin: 10px;
+  font-size: 16px;
+  border: 2px solid #00ff00;
+  background: black;
+  color: #00ff00;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  background: #00ff00;
+  color: black;
+  cursor: pointer;
   border: none;
-  font-size: 1em;
-  background: #111;
-  color: #0f0;
-  border-bottom: 2px solid #0f0;
+  margin-left: 10px;
+}
+
+#response {
+  margin-top: 20px;
+  font-size: 18px;
 }
