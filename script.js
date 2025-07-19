@@ -1,17 +1,26 @@
-const validPasswords = ["vitoiscool", "y0uR3_s0_dUMbb"];
-const easterEggs = ["iamstupid", "ilovepink", "caseohfan", "obamaiscool", "skibidirizz", "vito_the_goat"];
-const message = document.getElementById("message");
+const secretCodes = ["vitoiscool", "youresodumb"];
 
 function checkCode() {
-  const input = document.getElementById("codeInput").value.toLowerCase().trim();
+  const input = document.getElementById("codeInput").value.toLowerCase();
+  if (secretCodes.includes(input)) {
+    document.getElementById("inputScreen").classList.add("hidden");
+    document.getElementById("insultScreen").classList.remove("hidden");
 
-  if (validPasswords.includes(input)) {
-    document.getElementById("main").classList.add("hidden");
-    document.getElementById("endScreen").classList.remove("hidden");
-  } else if (easterEggs.includes(input)) {
-    window.location.href = "rickroll.mp4";
+    setTimeout(() => {
+      document.getElementById("insultScreen").classList.add("hidden");
+      document.getElementById("endScreen").classList.remove("hidden");
+    }, 3000);
   } else {
-    const insult = getRandomInsult();
-    message.textContent = insult;
+    alert("Invalid code.");
   }
 }
+
+document.getElementById("secretFile").addEventListener("click", () => {
+  document.getElementById("endScreen").classList.add("hidden");
+  document.getElementById("loadingScreen").classList.remove("hidden");
+
+  setTimeout(() => {
+    document.getElementById("loadingScreen").classList.add("hidden");
+    document.getElementById("rickroll").classList.remove("hidden");
+  }, 3000);
+});
