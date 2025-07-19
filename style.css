@@ -2,82 +2,89 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Courier New', monospace;
-  background: black;
-  color: #00ff00;
-  height: 100%;
   overflow: hidden;
+  background: black;
+  color: lime;
 }
 
-canvas {
+canvas#matrix {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
 }
 
-#mainContent {
-  position: relative;
-  z-index: 1;
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  top: 30vh;
+}
+
+.title {
+  font-size: 24px;
 }
 
 input, button {
-  font-size: 1em;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
   padding: 10px;
   margin-top: 10px;
-  background: black;
-  color: #00ff00;
-  border: 1px solid #00ff00;
+  background: #111;
+  color: lime;
+  border: 1px solid lime;
 }
 
-button:hover {
-  background: #002200;
+#insult {
+  margin-top: 15px;
+  color: red;
+}
+
+#end-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: lime;
+}
+
+.end-message {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.file-icon {
+  width: 80px;
   cursor: pointer;
+}
+
+.file-label {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#loading-bar {
+  width: 80%;
+  background: #333;
+  height: 10px;
+  margin: 20px auto;
+  border: 1px solid lime;
+}
+
+#progress {
+  width: 0%;
+  height: 100%;
+  background: lime;
 }
 
 .hidden {
   display: none;
 }
 
-#endScreen img {
-  width: 100px;
-  cursor: pointer;
+video {
+  max-width: 90vw;
+  max-height: 70vh;
   margin-top: 20px;
-}
-
-.agentText {
-  font-size: 1.2em;
-  font-family: Courier, monospace;
-}
-
-.loaderBar {
-  width: 300px;
-  height: 25px;
-  background: #003300;
-  border: 1px solid #00ff00;
-  margin: 30px auto;
-  position: relative;
-}
-
-.progress {
-  width: 0%;
-  height: 100%;
-  background: #00ff00;
-  animation: loadAnim 3s linear forwards;
-}
-
-@keyframes loadAnim {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
-#rickroll {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  object-fit: cover;
 }
