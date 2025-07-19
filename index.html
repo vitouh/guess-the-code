@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Crack the Code</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Portal</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
-  <div class="container">
-    <h1>🔒 Enter the Secret Code</h1>
-    <input type="text" id="codeInput" placeholder="Enter code...">
-    <button onclick="checkCode()">Enter</button>
-    <p id="response"></p>
+  <div class="container" id="login-container">
+    <h1 class="title">Enter Access Code</h1>
+    <input type="password" id="password" placeholder="Access Code" />
+    <button onclick="checkPassword()">ENTER</button>
     <p id="insult"></p>
   </div>
 
-  <div id="endScreen" class="hidden">
-    <h2>🔓 Welcome back, agent.</h2>
-    <div id="fileIcon" onclick="playRickroll()">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Crystal_file.svg" width="80" alt="file icon">
-      <p>s3cret_file</p>
+  <div id="end-screen" class="hidden">
+    <h1 class="end-message">welcome back agent.</h1>
+    <img src="file-icon.png" alt="s3cret file" class="file-icon" onclick="showFile()" />
+    <p class="file-label">s3cret_file</p>
+    <div id="loading-bar" class="hidden">
+      <div id="progress"></div>
     </div>
-    <div id="videoPopup" class="hidden">
-      <div class="loading-bar">
-        <div class="progress"></div>
-      </div>
-      <video id="rickrollVideo" controls autoplay>
-        <source src="rickroll.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <video id="rickroll" controls class="hidden">
+      <source src="rickroll.mp4" type="video/mp4" />
+    </video>
   </div>
+
+  <audio id="successSound" src="success.mp3"></audio>
+  <audio id="failSound" src="fail.mp3"></audio>
 
   <script src="matrix.js"></script>
   <script src="insults.js"></script>
