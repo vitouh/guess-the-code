@@ -3,29 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guess the C0D3</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Crack the Code</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-
-  <div id="container">
-    <h1>G͟u͟e͟s͟s͟ ͟t͟h͟e͟ ͟C͟0͟D͟3</h1>
-    <input type="text" id="codeInput" placeholder="Enter code..." />
+  <div class="container">
+    <h1>CRACK THE CODE</h1>
+    <input type="password" id="codeInput" placeholder="Enter the code..." />
     <button onclick="checkCode()">Submit</button>
-    <div id="hint">Hint: It's a code only a true genius would try.</div>
-    <div id="message"></div>
+    <p id="message"></p>
   </div>
 
-  <div id="playScreen" style="display: none;">
-    <div id="playButton" onclick="playRickroll()">▶️</div>
-  </div>
-
-  <div id="easterEggScreen" style="display: none;">
-    <iframe id="patrick" src="" allow="autoplay"></iframe>
-    <div id="easterText">Try again!<br>Refresh the site.</div>
-  </div>
-
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
