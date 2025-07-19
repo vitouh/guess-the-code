@@ -3,33 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Access Terminal</title>
+  <title>Hacker Terminal</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
-  <div class="matrix-background">
-    <canvas id="matrix"></canvas>
-  </div>
-
-  <div class="container">
-    <h1>Access Terminal</h1>
-    <input type="password" id="codeInput" placeholder="Enter the secret code" />
-    <button onclick="checkCode()">Enter</button>
-    <p id="feedback"></p>
-    <p id="hint">Hint: _________</p>
-    <div id="fileIcon" onclick="openSecretFile()">
-      📄 secret_file.pdf
+  <div class="matrix"></div>
+  <div class="terminal">
+    <div class="typed" id="typed-output">Access the secret file by entering the password:</div>
+    <input type="text" id="password" placeholder="Enter password..." autofocus autocomplete="off"/>
+    <div id="hint"></div>
+    <div id="insult"></div>
+    <div class="file-container" id="file-container" style="display:none;">
+      <div class="file-icon" onclick="showRickroll()">📄 secretfile.pdf</div>
     </div>
-    <div id="loader" class="hidden">Loading...</div>
-    <video id="rickroll" controls class="hidden">
-      <source src="rickroll.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
   </div>
 
-  <p class="footer">This website is made by Don Vito</p>
+  <div id="rickroll-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideRickroll()">&times;</span>
+      <video width="100%" controls autoplay>
+        <source src="rickroll.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
+  <footer>Made by Don Vito</footer>
+
+  <audio id="success-sound" src="success.mp3" preload="auto"></audio>
+  <audio id="fail-sound" src="fail.mp3" preload="auto"></audio>
+  
   <script src="script.js"></script>
 </body>
 </html>
