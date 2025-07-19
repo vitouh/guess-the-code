@@ -1,26 +1,36 @@
-const secretCodes = ["vitoiscool", "youresodumb"];
+const correctPasswords = ["vitoiscool", "y0uR3_s0_dUMbb"];
+const insultElement = document.getElementById("insult");
+const successSound = document.getElementById("successSound");
+const failSound = document.getElementById("failSound");
 
-function checkCode() {
-  const input = document.getElementById("codeInput").value.toLowerCase();
-  if (secretCodes.includes(input)) {
-    document.getElementById("inputScreen").classList.add("hidden");
-    document.getElementById("insultScreen").classList.remove("hidden");
-
-    setTimeout(() => {
-      document.getElementById("insultScreen").classList.add("hidden");
-      document.getElementById("endScreen").classList.remove("hidden");
-    }, 3000);
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  if (correctPasswords.includes(input)) {
+    successSound.play();
+    document.getElementById("login-container").classList.add("hidden");
+    document.getElementById("end-screen").classList.remove("hidden");
   } else {
-    alert("Invalid code.");
+    const randomInsult = insults[Math.floor(Math.random() * insults.length)];
+    insultElement.textContent = randomInsult;
+    failSound.play();
   }
 }
 
-document.getElementById("secretFile").addEventListener("click", () => {
-  document.getElementById("endScreen").classList.add("hidden");
-  document.getElementById("loadingScreen").classList.remove("hidden");
+function showFile() {
+  const loadingBar = document.getElementById("loading-bar");
+  const progress = document.getElementById("progress");
+  const video = document.getElementById("rickroll");
 
-  setTimeout(() => {
-    document.getElementById("loadingScreen").classList.add("hidden");
-    document.getElementById("rickroll").classList.remove("hidden");
-  }, 3000);
-});
+  loadingBar.classList.remove("hidden");
+  let width = 0;
+  const interval = setInterval(() => {
+    width++;
+    progress.style.width = width + "%";
+    if (width >= 100) {
+      clearInterval(interval);
+      loadingBar.classList.add("hidden");
+      video.classList.remove("hidden");
+      video.play();
+    }
+  }, 30);
+}
