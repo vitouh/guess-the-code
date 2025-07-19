@@ -1,13 +1,12 @@
 const insults = [
-  "Are you even trying?",
-  "My grandma types better codes.",
-  "That's just sad.",
-  "Try harder, maybe?",
-  "Incorrect again, genius.",
-  "You're embarrassing yourself.",
-  "Keep guessing, clown."
+  "Really? Try harder.",
+  "Wrong again, genius.",
+  "Is your brain even on?",
+  "You call that hacking?",
+  "You’re embarrassing yourself.",
+  "Even a potato could do better.",
+  "Nope. Not even close.",
+  "Still wrong. Impressive.",
+  "Your keyboard deserves better.",
+  "My cat guesses better than you."
 ];
-
-function getRandomInsult() {
-  return insults[Math.floor(Math.random() * insults.length)];
-}
