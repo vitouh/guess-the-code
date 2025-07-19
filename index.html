@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Secure Login</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="insults.js"></script>
-  <script defer src="matrix.js"></script>
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Access Terminal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  <div class="matrix-background">
+    <canvas id="matrix"></canvas>
+  </div>
+
   <div class="container">
-    <h1>Enter Password</h1>
-    <input type="password" id="password" placeholder="Enter code..." autofocus>
-    <button onclick="checkPassword()">Access</button>
-    <p id="insult"></p>
-    <div id="hint">Hint: <span id="revealedHint">__________</span></div>
-  </div>
-
-  <div id="endScreen">
-    <p class="welcome">welcome back agent.</p>
-    <div id="file" onclick="showRickRoll()">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="File Icon">
-      <span>s3cret_file</span>
+    <h1>Access Terminal</h1>
+    <input type="password" id="codeInput" placeholder="Enter the secret code" />
+    <button onclick="checkCode()">Enter</button>
+    <p id="feedback"></p>
+    <p id="hint">Hint: _________</p>
+    <div id="fileIcon" onclick="openSecretFile()">
+      📄 secret_file.pdf
     </div>
-    <div class="loading" id="loadingBar"></div>
+    <div id="loader" class="hidden">Loading...</div>
+    <video id="rickroll" controls class="hidden">
+      <source src="rickroll.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
 
-  <audio id="failSound" src="fail.mp3"></audio>
-  <audio id="successSound" src="success.mp3"></audio>
+  <p class="footer">This website is made by Don Vito</p>
 
-  <p id="credit">This website is made by Don Vito</p>
+  <script src="script.js"></script>
 </body>
 </html>
