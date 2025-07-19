@@ -2,37 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Access Denied</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="matrix.js"></script>
+  <script defer src="insults.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  <canvas id="matrixCanvas"></canvas>
 
-  <div class="container" id="login-container">
-    <h1 class="title">Enter Access Code</h1>
-    <input type="password" id="password" placeholder="Access Code" />
-    <button onclick="checkPassword()">ENTER</button>
-    <p id="insult"></p>
+  <div class="container">
+    <div class="terminal">
+      <p class="line">ACCESS DENIED.</p>
+      <p class="line" id="insultLine">You absolute donut.</p>
+      <input type="password" id="codeInput" placeholder="Enter secret code..." />
+      <button onclick="checkCode()">ENTER</button>
+    </div>
   </div>
 
-  <div id="end-screen" class="hidden">
-    <h1 class="end-message">welcome back agent.</h1>
-    <img src="file-icon.png" alt="s3cret file" class="file-icon" onclick="showFile()" />
-    <p class="file-label">s3cret_file</p>
-    <div id="loading-bar" class="hidden">
-      <div id="progress"></div>
+  <div id="endScreen" class="hidden">
+    <p class="welcome">welcome back agent.</p>
+    <div class="file-container">
+      <span class="file-icon">📁</span>
+      <span class="file-name" onclick="revealFile()">s3cret_file</span>
     </div>
-    <video id="rickroll" controls class="hidden">
+    <div id="loader" class="hidden">
+      <p>Loading...</p>
+      <div class="loading-bar"><div class="progress"></div></div>
+    </div>
+    <video id="rickroll" class="hidden" controls autoplay>
       <source src="rickroll.mp4" type="video/mp4" />
     </video>
   </div>
-
-  <audio id="successSound" src="success.mp3"></audio>
-  <audio id="failSound" src="fail.mp3"></audio>
-
-  <script src="matrix.js"></script>
-  <script src="insults.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
