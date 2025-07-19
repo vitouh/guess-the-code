@@ -1,22 +1,17 @@
-function checkPassword() {
-  const input = document.getElementById("passwordInput").value.trim();
-  const responseElement = document.getElementById("response");
+const validPasswords = ["vitoiscool", "y0uR3_s0_dUMbb"];
+const easterEggs = ["iamstupid", "ilovepink", "caseohfan", "obamaiscool", "skibidirizz", "vito_the_goat"];
+const message = document.getElementById("message");
 
-  if (passwordResponses.hasOwnProperty(input)) {
-    responseElement.textContent = passwordResponses[input];
+function checkCode() {
+  const input = document.getElementById("codeInput").value.toLowerCase().trim();
+
+  if (validPasswords.includes(input)) {
+    document.getElementById("main").classList.add("hidden");
+    document.getElementById("endScreen").classList.remove("hidden");
+  } else if (easterEggs.includes(input)) {
+    window.location.href = "rickroll.mp4";
   } else {
-    const randomInsults = [
-      "Wrong. Try again, genius.",
-      "That’s not it. Do better.",
-      "You call *that* a guess?",
-      "You're about as useful as a semicolon in Python.",
-      "Access denied. Like your crush rejecting you.",
-      "Nope. Not even close.",
-      "You're lost, aren't you?",
-      "404: Brain not found.",
-      "Wrong. Just like your life choices.",
-      "Try again. If your brain allows it."
-    ];
-    responseElement.textContent = randomInsults[Math.floor(Math.random() * randomInsults.length)];
+    const insult = getRandomInsult();
+    message.textContent = insult;
   }
 }
