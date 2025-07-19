@@ -1,10 +1,11 @@
 const insults = [
-  "You absolute donut.",
-  "You're as useless as a white crayon.",
-  "Did you think that would work?",
-  "Wrong again, genius.",
-  "Maybe try Googling next time.",
-  "Your keyboard deserves better."
+  "Are you even trying?",
+  "My grandma types better codes.",
+  "That's just sad.",
+  "Try harder, maybe?",
+  "Incorrect again, genius.",
+  "You're embarrassing yourself.",
+  "Keep guessing, clown."
 ];
 
 function getRandomInsult() {
