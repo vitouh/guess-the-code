@@ -1,52 +1,64 @@
-const correctPassword = "vit0isc00L";
-const quickPasswords = ["acr33", "y0ur3_s0_dUmBB"];
-let wrongAttempts = 0;
-let cooldown = false;
-let revealedHint = Array(correctPassword.length).fill("_");
+const correctCodes = ["vit0isc00L", "acr33", "y0ur3_s0_dUmBB"];
+let attempts = 0;
+let hintReveal = 0;
 
-function checkPassword() {
-  if (cooldown) return;
+function playSound(success) {
+  const audio = new Audio(success ? 'success.mp3' : 'fail.mp3');
+  audio.play();
+}
 
-  const input = document.getElementById("password").value;
+function checkCode() {
+  const input = document.getElementById("codeInput").value;
+  const feedback = document.getElementById("feedback");
 
-  if ([correctPassword, ...quickPasswords].includes(input)) {
-    document.getElementById("successSound").play();
-    showEndScreen();
+  if (correctCodes.includes(input)) {
+    playSound(true);
+    feedback.textContent = "Access granted.";
+    feedback.style.color = "#0f0";
   } else {
-    document.getElementById("failSound").play();
-    wrongAttempts++;
+    playSound(false);
+    feedback.textContent = getInsult();
+    feedback.style.color = "red";
+    attempts++;
 
-    document.getElementById("insult").textContent = getRandomInsult();
-    revealHint();
+    // Hint system
+    const hint = document.getElementById("hint");
+    const real = "vit0isc00L";
+    if (attempts % 3 === 0 && hintReveal < real.length) {
+      hintReveal++;
+    }
 
-    cooldown = true;
-    setTimeout(() => cooldown = false, 3000);
+    hint.textContent = "Hint: " + "_".repeat(real.length - hintReveal) + real.slice(real.length - hintReveal);
+
+    // Cooldown
+    document.getElementById("codeInput").disabled = true;
+    setTimeout(() => {
+      document.getElementById("codeInput").disabled = false;
+    }, 3000);
   }
-
-  document.getElementById("password").value = "";
 }
 
-function revealHint() {
-  const step = Math.floor(wrongAttempts / 3);
-  for (let i = 0; i < step && i < correctPassword.length; i++) {
-    revealedHint[i] = correctPassword[i];
-  }
-  document.getElementById("revealedHint").textContent = revealedHint.join("");
+function getInsult() {
+  const insults = [
+    "Wrong. You're not very bright, huh?",
+    "Nope. Try again, Einstein.",
+    "You call that a guess?",
+    "Still wrong. Yikes.",
+    "You're just embarrassing yourself now.",
+    "Error 404: Intelligence not found."
+  ];
+  return insults[Math.floor(Math.random() * insults.length)];
 }
 
-function showEndScreen() {
-  document.querySelector(".container").style.display = "none";
-  document.getElementById("endScreen").style.display = "block";
-}
+function openSecretFile() {
+  const loader = document.getElementById("loader");
+  const video = document.getElementById("rickroll");
 
-function showRickRoll() {
-  const bar = document.getElementById("loadingBar");
-  bar.style.width = "0";
+  loader.classList.remove("hidden");
+
   setTimeout(() => {
-    bar.style.width = "100%";
-  }, 50);
-  
-  setTimeout(() => {
-    window.location.href = "rickroll.mp4";
-  }, 2200);
+    loader.classList.add("hidden");
+    video.classList.remove("hidden");
+    video.play();
+  }, 2000);
 }
