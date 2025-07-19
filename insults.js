@@ -1,0 +1,21 @@
+const insults = {
+  "admin": "You're not an admin. You're a clown.",
+  "1234": "What are you, 5 years old?",
+  "vito": "Hey that’s me! Now try again.",
+  "donlopez13": "Nice username. Still wrong.",
+  "hacker": "Hacker? You can't even guess a code.",
+  "letmein": "Try knocking next time.",
+  "guest": "Access denied, stranger.",
+  "root": "You ain't root. You're rotten.",
+  "hello": "Hi. Now leave.",
+  "open_sesame": "This isn’t a fairy tale, buddy.",
+  "opensesame": "Wrong magic words, genius.",
+  "iloveyou": "Yuck. Keep your feelings to yourself.",
+  "qwerty": "Mash your keyboard harder next time.",
+  "test": "This ain’t a lab experiment.",
+  "0000": "That’s so secure… said no one ever.",
+  "correcthorsebatterystaple": "Nope. XKCD won’t help you.",
+  "godmode": "Not even close, mortal.",
+  "vscode": "Cool editor. Still the wrong code.",
+  "sigma": "You're not Him. You're mid."
+};
