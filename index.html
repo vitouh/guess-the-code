@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crack the Code</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacker Access</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  
-  <div id="main" class="content">
-    <h1>Enter the Code</h1>
-    <input type="text" id="codeInput" placeholder="Enter password...">
-    <button onclick="checkCode()">Submit</button>
-    <p id="message"></p>
+  <canvas id="matrixCanvas"></canvas>
+
+  <div id="mainContent">
+    <div id="insultScreen" class="hidden">
+      <h1 id="insultText">You're not supposed to be here.</h1>
+    </div>
+
+    <div id="inputScreen">
+      <h2>Enter Access Code</h2>
+      <input type="text" id="codeInput" placeholder="Enter code here" />
+      <button onclick="checkCode()">Submit</button>
+    </div>
+
+    <div id="endScreen" class="hidden">
+      <p class="agentText">Welcome back agent.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Folder_File_icon.svg"
+           alt="Secret File" id="secretFile" />
+    </div>
+
+    <div id="loadingScreen" class="hidden">
+      <p class="agentText">Decrypting s3cret_file...</p>
+      <div class="loaderBar"><div class="progress"></div></div>
+    </div>
   </div>
 
-  <div id="endScreen" class="hidden">
-    <h2 class="agent">welcome back agent.</h2>
-    <a href="rickroll.mp4" download>
-      <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" class="file-icon" alt="File icon">
-      <div class="filename">s3cret_file</div>
-    </a>
-  </div>
+  <video id="rickroll" class="hidden" autoplay controls>
+    <source src="rickroll.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <script src="matrix.js"></script>
   <script src="insults.js"></script>
