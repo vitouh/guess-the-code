@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hacker Access</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Crack the Code</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
+  <canvas id="matrix"></canvas>
 
-  <div id="mainContent">
-    <div id="insultScreen" class="hidden">
-      <h1 id="insultText">You're not supposed to be here.</h1>
-    </div>
-
-    <div id="inputScreen">
-      <h2>Enter Access Code</h2>
-      <input type="text" id="codeInput" placeholder="Enter code here" />
-      <button onclick="checkCode()">Submit</button>
-    </div>
-
-    <div id="endScreen" class="hidden">
-      <p class="agentText">Welcome back agent.</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Folder_File_icon.svg"
-           alt="Secret File" id="secretFile" />
-    </div>
-
-    <div id="loadingScreen" class="hidden">
-      <p class="agentText">Decrypting s3cret_file...</p>
-      <div class="loaderBar"><div class="progress"></div></div>
-    </div>
+  <div class="container">
+    <h1>🔒 Enter the Secret Code</h1>
+    <input type="text" id="codeInput" placeholder="Enter code...">
+    <button onclick="checkCode()">Enter</button>
+    <p id="response"></p>
+    <p id="insult"></p>
   </div>
 
-  <video id="rickroll" class="hidden" autoplay controls>
-    <source src="rickroll.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div id="endScreen" class="hidden">
+    <h2>🔓 Welcome back, agent.</h2>
+    <div id="fileIcon" onclick="playRickroll()">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Crystal_file.svg" width="80" alt="file icon">
+      <p>s3cret_file</p>
+    </div>
+    <div id="videoPopup" class="hidden">
+      <div class="loading-bar">
+        <div class="progress"></div>
+      </div>
+      <video id="rickrollVideo" controls autoplay>
+        <source src="rickroll.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
   <script src="matrix.js"></script>
   <script src="insults.js"></script>
