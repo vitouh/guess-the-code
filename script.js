@@ -1,36 +1,23 @@
-const correctPasswords = ["vitoiscool", "y0uR3_s0_dUMbb"];
-const insultElement = document.getElementById("insult");
-const successSound = document.getElementById("successSound");
-const failSound = document.getElementById("failSound");
+function checkCode() {
+  const input = document.getElementById("codeInput").value.toLowerCase();
+  const insultLine = document.getElementById("insultLine");
 
-function checkPassword() {
-  const input = document.getElementById("password").value;
-  if (correctPasswords.includes(input)) {
-    successSound.play();
-    document.getElementById("login-container").classList.add("hidden");
-    document.getElementById("end-screen").classList.remove("hidden");
+  if (input === "vitoiscool") {
+    new Audio('success.mp3').play();
+    document.querySelector(".container").classList.add("hidden");
+    document.getElementById("endScreen").classList.remove("hidden");
   } else {
-    const randomInsult = insults[Math.floor(Math.random() * insults.length)];
-    insultElement.textContent = randomInsult;
-    failSound.play();
+    insultLine.textContent = getRandomInsult();
+    new Audio('fail.mp3').play();
   }
 }
 
-function showFile() {
-  const loadingBar = document.getElementById("loading-bar");
-  const progress = document.getElementById("progress");
-  const video = document.getElementById("rickroll");
+function revealFile() {
+  document.querySelector(".file-container").classList.add("hidden");
+  document.getElementById("loader").classList.remove("hidden");
 
-  loadingBar.classList.remove("hidden");
-  let width = 0;
-  const interval = setInterval(() => {
-    width++;
-    progress.style.width = width + "%";
-    if (width >= 100) {
-      clearInterval(interval);
-      loadingBar.classList.add("hidden");
-      video.classList.remove("hidden");
-      video.play();
-    }
-  }, 30);
+  setTimeout(() => {
+    document.getElementById("loader").classList.add("hidden");
+    document.getElementById("rickroll").classList.remove("hidden");
+  }, 3000);
 }
