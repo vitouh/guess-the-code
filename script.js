@@ -1,19 +1,37 @@
-function checkPassword() {
-  const password = document.getElementById("password").value;
-  const message = document.getElementById("message");
-  const download = document.getElementById("downloadLink");
-  const success = document.getElementById("successSound");
-  const fail = document.getElementById("failSound");
+const input = document.getElementById('commandInput');
+const terminal = document.getElementById('terminal');
+const output = document.querySelector('.output');
+const failSound = document.getElementById('failSound');
+const successSound = document.getElementById('successSound');
 
-  if (password === "donvito") {
-    message.style.color = "lime";
-    message.textContent = "Access Granted!";
-    download.style.display = "block";
-    success.play();
-  } else {
-    message.style.color = "red";
-    message.textContent = insults[Math.floor(Math.random() * insults.length)];
-    download.style.display = "none";
-    fail.play();
+input.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    const command = input.value.trim().toLowerCase();
+    let message = "";
+
+    if (command === "open secret") {
+      message = "ACCESS GRANTED. Welcome, Agent Don Vito.";
+      successSound.play();
+    } else if (command === "rickroll") {
+      message = "Redirecting you to something unexpected...";
+      successSound.play();
+      setTimeout(() => window.location.href = "rickroll.mp4", 1500);
+    } else if (command === "show file") {
+      message = "🔓 SECRET FILE: classified.pdf [icon shown]";
+      const icon = document.createElement("img");
+      icon.src = "pdf-icon.png";
+      icon.style.width = "32px";
+      terminal.appendChild(icon);
+      successSound.play();
+    } else {
+      const insult = insults[Math.floor(Math.random() * insults.length)];
+      message = "ACCESS DENIED: " + insult;
+      failSound.play();
+    }
+
+    const p = document.createElement('p');
+    p.textContent = message;
+    terminal.insertBefore(p, input);
+    input.value = "";
   }
-}
+});
