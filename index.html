@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Secret Terminal</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <meta charset="UTF-8">
+  <title>Access Terminal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <div class="terminal">
-    <h1>Access Secure File</h1>
-    <input type="password" id="password" placeholder="Enter password..." />
-    <button onclick="checkPassword()">Unlock</button>
-    <div id="message"></div>
-    <a id="downloadLink" href="rickroll.mp4" download style="display: none;">
-      <img src="pdf-icon.png" alt="Download File" width="60" />
-      <p>Download Secret File</p>
-    </a>
+  <canvas id="matrixCanvas"></canvas>
+  <div id="terminal">
+    <p class="output">Initializing Access Terminal...</p>
+    <input type="text" id="commandInput" placeholder="Enter command here">
   </div>
-  <footer>
-    <p>This website is made by Don Vito</p>
-  </footer>
-
-  <audio id="successSound" src="success.mp3" preload="auto"></audio>
+  <p id="credit">This website is made by Don Vito</p>
   <audio id="failSound" src="fail.mp3" preload="auto"></audio>
-
-  <script src="matrix.js"></script>
+  <audio id="successSound" src="success.mp3" preload="auto"></audio>
   <script src="insults.js"></script>
+  <script src="matrix.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
