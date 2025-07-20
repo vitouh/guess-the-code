@@ -1,12 +1,16 @@
 const insults = [
-  "Did you even try?",
-  "My grandma types faster.",
-  "You're not a hacker, you're a slacker.",
-  "Are you lost, kid?",
-  "Try harder.",
+  "Is that your best guess?",
+  "Try harder, agent.",
+  "That was just sad.",
+  "You call that hacking?",
+  "Even a toaster could do better.",
+  "Incorrect. Again.",
+  "I've seen toddlers do better.",
+  "Wrong. You're wasting your time.",
   "Nice try, loser.",
-  "404 brain not found.",
-  "You wish you had access.",
-  "Who let the clown in?",
-  "That’s just embarrassing."
+  "Maybe computers aren't for you.",
 ];
+
+function getRandomInsult() {
+  return insults[Math.floor(Math.random() * insults.length)];
+}
