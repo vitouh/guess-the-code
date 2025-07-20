@@ -1,29 +1,32 @@
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+// matrix.js
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
+// Set full screen
 canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-const letters = "01";
-const fontSize = 14;
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@!*&";
+const fontSize = 16;
 const columns = canvas.width / fontSize;
 
-const drops = [];
-for (let x = 0; x < columns; x++) {
-  drops[x] = 1;
-}
+// Array of drops - one per column
+const drops = Array(Math.floor(columns)).fill(1);
 
+// Draw function
 function drawMatrix() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  // Black background with low opacity to show trail effect
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = '#0F0';
-  ctx.font = fontSize + 'px monospace';
+  ctx.fillStyle = "#0F0"; // Matrix green
+  ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
+    // Reset drop to top if it goes off screen
     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
     }
@@ -32,4 +35,4 @@ function drawMatrix() {
   }
 }
 
-setInterval(drawMatrix, 35);
+setInterval(drawMatrix, 33);
