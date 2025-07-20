@@ -1,16 +1,22 @@
-const insults = [
-  "Is that your best guess?",
-  "Try harder, agent.",
-  "That was just sad.",
-  "You call that hacking?",
-  "Even a toaster could do better.",
-  "Incorrect. Again.",
+const insultList = [
+  "Is that your best try?",
+  "Oof, that was rough.",
+  "Even AI is disappointed.",
+  "Keep trying, keyboard warrior.",
   "I've seen toddlers do better.",
-  "Wrong. You're wasting your time.",
-  "Nice try, loser.",
-  "Maybe computers aren't for you.",
+  "That guess hurt me physically.",
+  "You miss 100% of the shots you take. Like that one.",
+  "Do you even know what you’re doing?",
+  "Not even close.",
+  "You're making this too easy for me.",
+  "Go touch grass.",
+  "That was a war crime of an attempt.",
+  "You type like you're in the Stone Age.",
+  "Epic fail, bro.",
+  "Retry? Please don't."
 ];
 
 function getRandomInsult() {
-  return insults[Math.floor(Math.random() * insults.length)];
+  const index = Math.floor(Math.random() * insultList.length);
+  return insultList[index];
 }
