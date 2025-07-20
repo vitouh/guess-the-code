@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Secret File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secret Terminal</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <canvas id="matrix"></canvas>
-  <div class="content">
-    <div class="file-icon">
-      <img src="pdf-icon.png" alt="PDF Icon" />
-      <p>Secret_File.pdf</p>
-    </div>
-    <div id="terminal">
-      <p>Enter password to access:</p>
-      <input type="password" id="passwordInput" placeholder="Enter password" autofocus />
-      <div id="hintArea">Hint: _________</div>
-      <p id="message"></p>
-    </div>
+  <div class="terminal">
+    <h1>Access Secure File</h1>
+    <input type="password" id="password" placeholder="Enter password..." />
+    <button onclick="checkPassword()">Unlock</button>
+    <div id="message"></div>
+    <a id="downloadLink" href="rickroll.mp4" download style="display: none;">
+      <img src="pdf-icon.png" alt="Download File" width="60" />
+      <p>Download Secret File</p>
+    </a>
   </div>
-  <footer>This website is made by Don Vito</footer>
+  <footer>
+    <p>This website is made by Don Vito</p>
+  </footer>
 
-  <audio id="failSound" src="fail.mp3"></audio>
-  <audio id="successSound" src="success.mp3"></audio>
+  <audio id="successSound" src="success.mp3" preload="auto"></audio>
+  <audio id="failSound" src="fail.mp3" preload="auto"></audio>
 
   <script src="matrix.js"></script>
   <script src="insults.js"></script>
