@@ -1,65 +1,73 @@
-let insults = [
-  "Is that all you've got?",
-  "Try again, genius.",
-  "My grandma types faster than you.",
-  "Seriously?",
-  "Wrong. Again.",
-  "This is getting sad.",
-  "I'm losing faith in humanity.",
-  "Oof, embarrassing.",
-  "C'mon, you can do better than that.",
-  "Even a potato would’ve cracked it by now."
-];
+const form = document.getElementById("codeForm");
+const input = document.getElementById("codeInput");
+const message = document.getElementById("message");
+const fileContainer = document.getElementById("fileContainer");
 
-let correctPassword = "sigma";
-let attemptCount = 0;
-let hintRevealed = 0;
-let cooldown = false;
-
-function checkPassword() {
-  if (cooldown) {
-    alert("Too fast. Wait a bit...");
-    return;
+const validCodes = {
+  "acr33": {
+    type: "file",
+    filename: "classified.pdf",
+    icon: "pdf-icon.png",
+    href: "classified.pdf"
+  },
+  "vit0isc00L": {
+    type: "rickroll",
+    href: "rickroll.html"
+  },
+  "y0Ur3_s0_dUmBB": {
+    type: "rickroll",
+    href: "rickroll.html"
   }
+};
 
-  let input = document.getElementById("password").value;
-  if (input === correctPassword) {
-    window.location.href = "rickroll.html";
+let attempts = 0;
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const code = input.value.trim();
+
+  if (validCodes[code]) {
+    const data = validCodes[code];
+
+    if (data.type === "file") {
+      fileContainer.innerHTML = `
+        <div class="file-download">
+          <img src="${data.icon}" alt="File Icon" />
+          <a href="${data.href}" download>Download ${data.filename}</a>
+        </div>
+      `;
+      message.textContent = "Access granted.";
+    } else if (data.type === "rickroll") {
+      fileContainer.innerHTML = `
+        <div class="file-download">
+          <img src="pdf-icon.png" alt="Fake File Icon" />
+          <a href="${data.href}">Download Confidential File</a>
+        </div>
+      `;
+      message.textContent = "Welcome back, Agent.";
+    }
+    input.value = "";
+    attempts = 0;
   } else {
-    attemptCount++;
-    let insult = insults[Math.floor(Math.random() * insults.length)];
-    document.getElementById("insult").innerText = insult;
+    attempts++;
+    message.textContent = "Access denied.";
 
-    if (attemptCount % 3 === 0) {
-      showHint();
+    if (attempts % 3 === 0) {
+      const hint = generateHint("acr33");
+      const hintBox = document.createElement("div");
+      hintBox.textContent = `Hint: ${hint}`;
+      hintBox.classList.add("hint");
+      fileContainer.appendChild(hintBox);
     }
 
-    cooldown = true;
-    setTimeout(() => {
-      cooldown = false;
-    }, 1500); // 1.5 seconds cooldown
+    input.value = "";
   }
-}
+});
 
-function showHint() {
-  if (hintRevealed >= correctPassword.length) return;
-
-  let hintChar = correctPassword.charAt(hintRevealed);
-  let fakeChars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let randomized = hintChar;
-
-  while (randomized.length < 6) {
-    let randomChar = fakeChars.charAt(Math.floor(Math.random() * fakeChars.length));
-    if (!randomized.includes(randomChar)) {
-      randomized += randomChar;
-    }
-  }
-
-  randomized = randomized.split('').sort(() => 0.5 - Math.random()).join('');
-  let hintElement = document.createElement("div");
-  hintElement.className = "hint";
-  hintElement.innerText = `One of the letters is: ${randomized}`;
-  document.body.appendChild(hintElement);
-
-  hintRevealed++;
+function generateHint(code) {
+  // Randomly shuffle the characters
+  return code
+    .split('')
+    .sort(() => Math.random() - 0.5)
+    .join('');
 }
