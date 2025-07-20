@@ -1,11 +1,12 @@
 const insults = [
-  "Wrong again, rookie!",
-  "You're not even close!",
-  "This isn't for you.",
-  "Seriously? Try harder.",
-  "That's just embarrassing.",
-  "Get real, hacker-wannabe.",
-  "Access Denied. Again.",
-  "Better luck next time!",
-  "Maybe you're in the wrong place?"
+  "Did you even try?",
+  "My grandma types faster.",
+  "You're not a hacker, you're a slacker.",
+  "Are you lost, kid?",
+  "Try harder.",
+  "Nice try, loser.",
+  "404 brain not found.",
+  "You wish you had access.",
+  "Who let the clown in?",
+  "That’s just embarrassing."
 ];
