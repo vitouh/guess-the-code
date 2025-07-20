@@ -1,59 +1,65 @@
-const correctPasswords = ["acr33"];
-const specialPasswords = {
-  "vit0isc00L": "y0Ur3_s0_dUmBB",
-};
+let insults = [
+  "Is that all you've got?",
+  "Try again, genius.",
+  "My grandma types faster than you.",
+  "Seriously?",
+  "Wrong. Again.",
+  "This is getting sad.",
+  "I'm losing faith in humanity.",
+  "Oof, embarrassing.",
+  "C'mon, you can do better than that.",
+  "Even a potato would’ve cracked it by now."
+];
 
-let incorrectCount = 0;
-let cooldownActive = false;
+let correctPassword = "sigma";
+let attemptCount = 0;
+let hintRevealed = 0;
+let cooldown = false;
 
-document.getElementById("terminal-input").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    const input = this.value.trim();
-    this.value = "";
-    processCommand(input);
-  }
-});
-
-function processCommand(input) {
-  const output = document.getElementById("output");
-
-  if (specialPasswords[input]) {
-    output.innerHTML += `Welcome back, Agent Vito.\nOpening file...\n`;
-    setTimeout(() => {
-      window.location.href = specialPasswords[input] + ".html";
-    }, 2000);
+function checkPassword() {
+  if (cooldown) {
+    alert("Too fast. Wait a bit...");
     return;
   }
 
-  if (correctPasswords.includes(input)) {
-    output.innerHTML += "Access granted.\nOpening file...\n";
-    setTimeout(() => {
-      window.location.href = "rickroll.html";
-    }, 2000);
+  let input = document.getElementById("password").value;
+  if (input === correctPassword) {
+    window.location.href = "rickroll.html";
   } else {
-    incorrectCount++;
-    output.innerHTML += `Access denied: ${input}\n`;
+    attemptCount++;
+    let insult = insults[Math.floor(Math.random() * insults.length)];
+    document.getElementById("insult").innerText = insult;
 
-    if (incorrectCount % 3 === 0) {
-      triggerHint(output);
+    if (attemptCount % 3 === 0) {
+      showHint();
     }
+
+    cooldown = true;
+    setTimeout(() => {
+      cooldown = false;
+    }, 1500); // 1.5 seconds cooldown
   }
 }
 
-function triggerHint(output) {
-  if (cooldownActive) return;
+function showHint() {
+  if (hintRevealed >= correctPassword.length) return;
 
-  const hint = generateHint();
-  output.innerHTML += `Hint: ${hint}\n`;
+  let hintChar = correctPassword.charAt(hintRevealed);
+  let fakeChars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let randomized = hintChar;
 
-  cooldownActive = true;
-  setTimeout(() => {
-    cooldownActive = false;
-  }, 10000); // 10s cooldown
-}
+  while (randomized.length < 6) {
+    let randomChar = fakeChars.charAt(Math.floor(Math.random() * fakeChars.length));
+    if (!randomized.includes(randomChar)) {
+      randomized += randomChar;
+    }
+  }
 
-function generateHint() {
-  const password = correctPasswords[0];
-  let scrambled = password.split('').sort(() => Math.random() - 0.5).join('');
-  return `Password letters (randomized): ${scrambled}`;
+  randomized = randomized.split('').sort(() => 0.5 - Math.random()).join('');
+  let hintElement = document.createElement("div");
+  hintElement.className = "hint";
+  hintElement.innerText = `One of the letters is: ${randomized}`;
+  document.body.appendChild(hintElement);
+
+  hintRevealed++;
 }
