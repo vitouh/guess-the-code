@@ -1,94 +1,105 @@
-const passwordInput = document.getElementById("passwordInput");
-const message = document.getElementById("message");
-const attemptsEl = document.getElementById("attempts");
-const secretPage = document.getElementById("secretPage");
-const agentPage = document.getElementById("agentPage");
-const rickroll = document.getElementById("rickroll");
-const jumpscare = document.getElementById("jumpscare");
-const jumpscareSound = document.getElementById("jumpscareSound");
-
 let attempts = 0;
-
-const correctPasswords = ["vit0isc00L", "y0UrE_s0_DumBB", "acr33"];
-const easterEggs = {
-  "password": "Bro… really?",
-  "123456": "This ain’t your email login, champ.",
-  "admin": "You're not that guy, pal.",
-  "letmein": "No. Go touch grass.",
-  "iloveyou": "🤨 That's not how this works.",
-  "opensesame": "Wrong genie.",
-  "qwerty": "That’s just sad.",
-  "monkey": "Return to monkey. But still wrong.",
-  "jumpscare": "trigger-jumpscare"
+const correctPasswords = {
+  "vit0isc00L": { hint: "He thinks he's cool. Maybe he is?" },
+  "y0UrE_s0_DumBB": { hint: null },
+  "acr33": { isAdmin: true }
 };
 
-const insults = [
-  "💅 That’s not the password, bestie.",
-  "Your brain said ‘💨’",
-  "Bro typed with eyes closed.",
-  "Try again, Einstein 🧠✨",
-  "L ratio + no password",
-  "You thought you ate? Nah.",
-  "TikTok would flame you for that guess.",
-  "Go ahead, delete your keyboard.",
-  "I bet you peaked in preschool with guesses like that.",
-  "Certified goofy attempt 🤡",
-  "Your keyboard deserves better.",
-  "Even ChatGPT wouldn’t guess that.",
-  "That's a password? Or a cry for help?",
-  "NPC behavior detected.",
-  "Skill issue 💀",
-  "Try harder. Or don’t.",
-  "This isn’t Roblox, bro.",
-  "Stop it. Get some help.",
-  "🤡 You’re doing great. At failing.",
-  "I can smell the braincells dying."
-];
+const easterEggs = {
+  "password": "🤓 Bro used 'password' as the password. Skibidi brain detected.",
+  "1234": "Did your grandma set that password?",
+  "admin": "You are not him 💀",
+  "sigma": "Not very sigma of you to guess that.",
+  "letmein": "Door is locked for a reason, genius.",
+  "guest": "This ain’t a hotel.",
+  "opensesame": "Wrong magic words, Aladdin.",
+  "hacker": "Just because you type 'hacker' doesn't make you one.",
+  "qwerty": "Try using your whole brain.",
+  "iloveyou": "Bro confessed to a login screen 😭",
+  "jumpscare": "👻💥", // will trigger below
+};
 
 function checkPassword() {
-  const input = passwordInput.value.trim();
-  attempts++;
-  attemptsEl.textContent = `Attempts: ${attempts}`;
+  const input = document.getElementById("passwordInput").value;
+  const msg = document.getElementById("message");
+  const hint = document.getElementById("hint");
+  const failCount = document.getElementById("failCount");
 
-  // Correct password
-  if (correctPasswords.includes(input)) {
-    document.querySelector(".container").style.display = "none";
-    secretPage.style.display = "block";
-    setTimeout(() => {
-      secretPage.style.display = "none";
-      agentPage.style.display = "block";
-    }, 3000);
-    return;
-  }
-
-  // Easter Egg Passwords
-  if (input in easterEggs) {
-    if (easterEggs[input] === "trigger-jumpscare") {
-      triggerJumpscare();
-      return;
+  if (input in correctPasswords) {
+    if (input === "acr33") {
+      window.location.href = "admin.html";
+    } else if (input === "vit0isc00L") {
+      showLoadingThen(() => window.location.href = "rickroll.html");
+    } else if (input === "y0UrE_s0_DumBB") {
+      showLoadingThen(() => window.location.href = "rickroll.html");
     }
-    message.textContent = easterEggs[input];
     return;
   }
 
-  // Random insult
-  const insult = insults[Math.floor(Math.random() * insults.length)];
-  message.textContent = insult;
+  if (input in easterEggs) {
+    if (input === "jumpscare") {
+      showJumpscare();
+    } else {
+      msg.innerText = easterEggs[input];
+    }
+  } else {
+    const insult = getRandomInsult();
+    msg.innerText = `❌ Incorrect password. ${insult}`;
+  }
+
+  attempts++;
+  failCount.innerText = `Failed Attempts: ${attempts}`;
+
+  if (input === "vit0isc00L" && attempts % 3 === 0) {
+    hint.innerText = correctPasswords["vit0isc00L"].hint;
+  } else {
+    hint.innerText = "";
+  }
 }
 
-function playRickroll() {
-  rickroll.style.display = "block";
-  rickroll.play();
-}
+function showLoadingThen(callback) {
+  const msg = document.getElementById("message");
+  msg.innerText = "Loading system...";
+  let dots = 0;
+  const interval = setInterval(() => {
+    dots = (dots + 1) % 4;
+    msg.innerText = "Loading" + ".".repeat(dots);
+  }, 500);
 
-function restart() {
-  location.reload();
-}
-
-function triggerJumpscare() {
-  jumpscare.style.display = "block";
-  jumpscareSound.play();
   setTimeout(() => {
-    jumpscare.style.display = "none";
-  }, 2500);
+    clearInterval(interval);
+    callback();
+  }, 3000);
+}
+
+function showJumpscare() {
+  const body = document.body;
+  body.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = 'jumpscare.jpg';
+  img.style.width = '100vw';
+  img.style.height = '100vh';
+  img.style.objectFit = 'cover';
+  img.style.position = 'fixed';
+  img.style.top = 0;
+  img.style.left = 0;
+  const audio = new Audio('scream.mp3');
+  body.appendChild(img);
+  audio.play();
+}
+
+function getRandomInsult() {
+  const insults = [
+    "That guess had 0 brain cells involved.",
+    "Even my cat can guess better.",
+    "You're one password away from a clown badge.",
+    "Try again, TikTok genius.",
+    "The system is embarrassed for you.",
+    "Are you typing with your forehead?",
+    "You make ChatGPT cry.",
+    "Your password skills are as bad as your rizz.",
+    "That was not very sigma of you.",
+    "Your password game is weaker than your Wi-Fi."
+  ];
+  return insults[Math.floor(Math.random() * insults.length)];
 }
