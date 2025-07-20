@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Access Terminal</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACR33 Terminal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <canvas id="matrix-canvas"></canvas>
+
   <div class="terminal">
-    <h1 class="title">🔐 Guessthecode Access Terminal</h1>
-    <p>Enter password:</p>
-    <input type="password" id="passwordInput" autofocus />
-    <button onclick="checkPassword()">Submit</button>
-    <p id="message"></p>
-    <p id="hint"></p>
-    <p id="failCount"></p>
+    <pre id="output">
+Welcome to ACR33 Terminal.
+Enter access code below to proceed.
+</pre>
+    <input type="text" id="terminal-input" autocomplete="off" autofocus />
   </div>
+
+  <audio id="scream" src="scream.mp3"></audio>
+
+  <script src="matrix.js"></script>
+  <script src="insults.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
