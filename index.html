@@ -1,45 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guess the Code</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Access Terminal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>🔐 Enter Password</h1>
-    <input type="text" id="passwordInput" placeholder="Type here..." autofocus />
+  <div class="terminal">
+    <h1 class="title">🔐 Guessthecode Access Terminal</h1>
+    <p>Enter password:</p>
+    <input type="password" id="passwordInput" autofocus />
     <button onclick="checkPassword()">Submit</button>
     <p id="message"></p>
-    <p id="attempts">Attempts: 0</p>
+    <p id="hint"></p>
+    <p id="failCount"></p>
   </div>
-
-  <!-- Secret Page -->
-  <div class="secret" id="secretPage">
-    <h2>Loading...</h2>
-    <div class="loader"></div>
-  </div>
-
-  <!-- Welcome Agent File -->
-  <div class="agent" id="agentPage">
-    <h2>Welcome back, Agent.</h2>
-    <div class="file" onclick="playRickroll()">
-      <img src="file-icon.png" alt="file" />
-      <p>rickroll.mp4</p>
-    </div>
-    <video id="rickroll" controls style="display: none;" autoplay>
-      <source src="rickroll.mp4" type="video/mp4">
-    </video>
-    <button onclick="restart()">Restart</button>
-  </div>
-
-  <!-- Jumpscare -->
-  <div class="jumpscare" id="jumpscare">
-    <img src="jumpscare.jpg" alt="SCREAM!" />
-    <audio id="jumpscareSound" src="jumpscare.mp3"></audio>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
