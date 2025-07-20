@@ -1,49 +1,54 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: monospace;
+body {
   background-color: black;
   color: #00ff00;
-  overflow: hidden;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-#matrix-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.terminal {
-  position: relative;
-  z-index: 1;
-  width: 80%;
-  max-width: 800px;
-  margin: 100px auto;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid #00ff00;
-  padding: 20px;
-  box-shadow: 0 0 10px #00ff00;
-  border-radius: 5px;
-}
-
-#output {
-  white-space: pre-wrap;
-  margin-bottom: 10px;
+h1, h2 {
   color: #00ff00;
 }
 
-#terminal-input {
-  width: 100%;
-  background: black;
-  border: none;
-  border-top: 1px solid #00ff00;
-  color: #00ff00;
-  font-size: 1em;
+input[type="password"] {
   padding: 10px;
-  box-sizing: border-box;
-  outline: none;
+  margin-top: 20px;
+  background-color: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+  font-family: monospace;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #222;
+  color: #0f0;
+  border: 1px solid #0f0;
+  font-family: monospace;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0f0;
+  color: #000;
+}
+
+#insult {
+  margin-top: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+.hint {
+  color: #ff0;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.test-page {
+  color: #0ff;
+  font-size: 20px;
+  margin-top: 50px;
 }
