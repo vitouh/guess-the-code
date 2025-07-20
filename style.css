@@ -1,67 +1,31 @@
 body {
-  font-family: 'Courier New', monospace;
   background-color: black;
-  color: lime;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  padding: 50px;
+  padding-top: 50px;
 }
 
-.container, .secret, .agent {
-  display: none;
-}
-
-.container {
-  display: block;
-}
-
-input, button {
-  font-size: 1.2em;
-  padding: 10px;
-  margin: 10px;
-}
-
-.loader {
-  width: 100px;
-  height: 20px;
-  border: 2px solid lime;
-  animation: loading 2s infinite;
+.terminal {
+  max-width: 500px;
   margin: auto;
+  padding: 20px;
+  border: 1px solid #00ff00;
+  background-color: #111;
+  border-radius: 10px;
 }
 
-@keyframes loading {
-  0% { background-color: transparent; }
-  50% { background-color: lime; }
-  100% { background-color: transparent; }
-}
-
-.file {
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.file img {
-  width: 50px;
-  height: 50px;
-}
-
-#rickroll {
-  width: 80%;
-  margin-top: 20px;
-}
-
-.jumpscare {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
+input {
+  padding: 10px;
   background-color: black;
-  z-index: 999;
+  color: #0f0;
+  border: 1px solid #0f0;
 }
 
-.jumpscare img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+button {
+  padding: 10px;
+  background-color: #222;
+  color: #0f0;
+  border: 1px solid #0f0;
+  cursor: pointer;
 }
