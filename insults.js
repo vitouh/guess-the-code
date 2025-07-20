@@ -1,12 +1,11 @@
 const insults = [
-  "Really? Try harder.",
-  "Wrong again, genius.",
-  "Is your brain even on?",
-  "You call that hacking?",
-  "You’re embarrassing yourself.",
-  "Even a potato could do better.",
-  "Nope. Not even close.",
-  "Still wrong. Impressive.",
-  "Your keyboard deserves better.",
-  "My cat guesses better than you."
+  "Wrong again, rookie!",
+  "You're not even close!",
+  "This isn't for you.",
+  "Seriously? Try harder.",
+  "That's just embarrassing.",
+  "Get real, hacker-wannabe.",
+  "Access Denied. Again.",
+  "Better luck next time!",
+  "Maybe you're in the wrong place?"
 ];
